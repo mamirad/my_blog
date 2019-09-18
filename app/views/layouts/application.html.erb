@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+        <div id="wrapper">
+        <header class="tech-header header">
+            <div class="container-fluid">
+                <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="tech-index.html">
+                        <%=image_tag('blog/tech-logo.png')%>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <%=link_to  'Home',root_path, class: 'nav-link'%>
+                            </li>
+                           
+                            <li class="nav-item">
+                               <%if current_user.present?%>
+                                <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                                <%else%>
+                                <%=link_to 'Log In',  new_user_session_path, class: 'nav-link'%>
+                                <%end%>
+                            </li>                   
+                            <li class="nav-item">
+                               
+                                <%=link_to 'Create Article', new_article_path, class: 'nav-link'%>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="tech-category-03.html">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                               
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav mr-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-rss"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-android"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-apple"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container-fluid -->
+        </header><!-- end market-header -->
+
+    <%= yield %>
+  </body>
+</html>
+
