@@ -1,4 +1,39 @@
-<%= form_with(model: article, local: true) do |form| %>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+#create_article_form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+
+
+<div class="container" id="create_article_form">
+  <%= form_with(model: article, local: true) do |form| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -25,9 +60,10 @@
     <%= form.label :Article_Picture %><br />
     <%if params[:action]=='new' %>
      <%= form.file_field :soft_pic, accept: 'image/png,image/jpeg'%>
-    <% else%>
+    <% else %>
     <%= form.file_field :soft_pic, accept: 'image/png,image/jpeg'%>
-     <%= image_tag(article.pictures.first.soft_pic.url, size: "50x50")%>
+   
+    <%= image_tag(article.pictures.first.soft_pic.url, size: "50x50") if article.pictures.present? %>
     <%end %>
  
 
@@ -38,3 +74,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+
+
+
+
+

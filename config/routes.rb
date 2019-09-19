@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'new_reply', to: 'article_comments#new_reply', as: 'new_reply'
   resources :articles
   resources :article_comments
   root 'home#index'

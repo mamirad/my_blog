@@ -4,7 +4,7 @@ class ArticleCommentsController < ApplicationController
 		@article_comment = ArticleComment.new(comment: params[:comment],article_id: params[:article_id],user_id: current_user.id)
 	     if params[:article_comment_id].present?
 	    
-	      @obj_article = BlogComment.find (params[:article_comment_id])
+	      @obj_article = ArticleComment.find (params[:article_comment_id])
 
 	      @article_comment.article_id=@obj_article.article_id
 	      @article_comment.parent_id=params[:article_comment_id]
@@ -13,5 +13,10 @@ class ArticleCommentsController < ApplicationController
 		    respond_to do |format|
 		    format.js{}
 			end 
+	end
+	def new_reply
+		respond_to do |format|
+		  format.js{}
+		end 
 	end
 end

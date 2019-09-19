@@ -13,6 +13,7 @@ gem 'puma', '~> 3.11'
 gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem 'jquery-rails'
+gem 'will_paginate', '~> 3.1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
